@@ -1,0 +1,114 @@
+html{
+    height: 100% ;
+}
+body{
+    background:#ebedef;
+    margin:0;
+    padding: 0;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    position:relative;
+
+
+}
+
+.header{
+    /* width: 100vw; */
+    background-color: rgb(216, 220, 232);
+    box-shadow: 0px 5px 10px rgb(0, 0, 0,0.2);
+}
+.header h1{
+    margin: 0;
+
+}
+
+.calculator{
+    height: 700px;
+    width: 500px;
+    background-color: grey;
+    position:absolute;
+    inset: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;    
+}
+
+
+
+.screen{
+    background-color: rgb(134, 156, 138);
+    margin: 20px 10px;
+    padding: 5px 20px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+}
+
+.buttons{
+    display: flex;
+    justify-content:flex-start ;
+}
+
+.buttons div div {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.digits {
+    margin-top: auto;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    width: 320px;
+    gap: 10px;
+    margin: 20px;
+    margin-top: auto ;
+}
+
+.digits div{
+    
+    background-color: beige;
+}
+
+.digits :hover{
+    background-color: rgb(208, 208, 185);
+}
+
+.operators{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    margin-bottom: 20px;
+}
+
+.operators div{
+    background-color: rgb(242, 205, 172);
+}
+
+.operators :hover{
+    background-color: rgb(186, 146, 112);
+}
+
+
+
+#zero{
+    width: 210px;
+    border-radius: 50px ;
+
+}
+
+
+.footer{
+    margin-top: auto;
+    height: 50px;
+    background-color: rgb(216, 220, 232);
+    box-shadow: 0px -10px 20px rgb(0, 0, 0,0.2);
+}
