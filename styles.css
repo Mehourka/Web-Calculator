@@ -41,9 +41,11 @@ body{
     margin: 20px 10px;
     padding: 5px 20px;
     height: 50px;
+    width:70%;
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     
 }
@@ -53,7 +55,7 @@ body{
     justify-content:flex-start ;
 }
 
-.buttons div div {
+.button{
     height: 100px;
     width: 100px;
     border-radius: 50%;
@@ -61,6 +63,10 @@ body{
     align-items: center;
     justify-content: center;
     
+}
+
+.button:hover{
+    filter:brightness(85%)
 }
 
 .digits {
@@ -78,9 +84,7 @@ body{
     background-color: beige;
 }
 
-.digits :hover{
-    background-color: rgb(208, 208, 185);
-}
+
 
 .operators{
     display: flex;
@@ -93,9 +97,7 @@ body{
     background-color: rgb(242, 205, 172);
 }
 
-.operators :hover{
-    background-color: rgb(186, 146, 112);
-}
+
 
 
 
