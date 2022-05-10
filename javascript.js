@@ -2,9 +2,10 @@
 const mainScreen = document.querySelector(".displayed");
 const secondScreen = document.querySelector(".equation")
 let nextOperator = "";
-let memNumber = "";
-let newNumber = 0;
-let clearFlag = false;
+let firstNumber = "";
+let secondNumber = "";
+let displayNumber = 0;
+let clearFlag = true;
 
 function operation(a,b,operator){
     // In : a, b - numbers
@@ -29,6 +30,9 @@ function operation(a,b,operator){
         case "*":
             return multiply(a,b);
             break;
+        case "=":
+            return b;
+            break;
     }
 }
 
@@ -47,16 +51,16 @@ function inputButton(element){
     // Digit class elements gets printed on screen
     if(element.classList.contains("digit")){
         if (clearFlag){
-            newNumber = "";
+            displayNumber = "";
             clearFlag = false;
         }
-        if (newNumber == 0 ){
-            newNumber = newStr;
+        if (displayNumber == 0 ){
+            displayNumber = newStr;
         }else{
             // mainScreen.textContent += newStr;    
-            newNumber+= newStr    
+            displayNumber+= newStr    
         }
-        display(newNumber)
+        display(displayNumber)
     }
 
     //clear
@@ -65,42 +69,65 @@ function inputButton(element){
     }
 
     if(element.classList.contains("del")){
-        edited = mainScreen.textContent.slice(0,-1);
-        mainScreen.textContent = edited;
+        // edited = mainScreen.textContent.slice(0,-1);
+        // mainScreen.textContent = edited;
+        displayNumber = displayNumber.slice(0,-1)
+        display(displayNumber)
+    }
+
+    if(element.classList.contains("equals")){
+        secondNumber = displayNumber;
+        displayNumber = operation(firstNumber, secondNumber, nextOperator);
+        display(displayNumber, equals = true)
+        clearFlag = true;
+        secondNumber="";
+        firstNumber= displayNumber;
+
     }
 
 
 
     // operators elements get assigned to nextOperator
     if(element.classList.contains("operator")){
-        // if clearFlag
-        nextOperator = element.textContent;
-
-
+        
+        if(firstNumber===""){
+            firstNumber = displayNumber;
+        }else if(!clearFlag){
+            console.log("writing second ")
+            secondNumber= displayNumber;
+            // nextOperator = element.textContent;
+        }
         clearFlag=true;
-        if(!memNumber) {
-            memNumber = 0;
-        } 
-        memNumber = operation(memNumber, newNumber, nextOperator);
-        newNumber="";
-        display(memNumber);
+        // displayNumber="";
+        
+        if(firstNumber !== "" && secondNumber !== ""&& nextOperator!== ""){
+            displayNumber = operation(firstNumber, secondNumber, nextOperator);            
+            firstNumber=displayNumber;
+            secondNumber="";
+            display(displayNumber);
+        }
+        nextOperator = element.textContent;
+        display(displayNumber);
         }
 
 
 }
 
 
-function display(strNumber){
+function display(strNumber, equals=false){
     //displays strNumber on .screen element
     mainScreen.textContent = strNumber;
-    secondScreen.textContent= memNumber+ nextOperator+newNumber;
+    secondScreen.textContent= firstNumber+ nextOperator+secondNumber;
+    if(equals) {secondScreen.textContent += " = "}
 }
 
 function clearDisplay(){
     // Clears the whole screen an reset the numbers.
     mainScreen.textContent = "0";
     secondScreen.innerHTML = "<wbr>";
-    memNumber = newNumber = "";
+    firstNumber = secondNumber = nextOperator=  "";
+
+    displayNumber=0;
 }
 
 function add(a,b){
