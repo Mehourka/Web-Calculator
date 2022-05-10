@@ -2,8 +2,10 @@
 const mainScreen = document.querySelector(".displayed");
 const secondScreen = document.querySelector(".equation")
 let nextOperator = "";
-let firstNumber = "";
-let secondNumber = "";
+// first and second number are used to save values in memory
+let firstNumber = ""; 
+let secondNumber = ""; 
+// displayNumber is used to display typed values and results
 let displayNumber = 0;
 let clearFlag = true;
 
@@ -56,8 +58,9 @@ function inputButton(element){
         }
         if (displayNumber == 0 ){
             displayNumber = newStr;
+        }else if (newStr == "." && displayNumber.includes(".")){
+            //do nothing
         }else{
-            // mainScreen.textContent += newStr;    
             displayNumber+= newStr    
         }
         display(displayNumber)
@@ -117,7 +120,7 @@ function inputButton(element){
 function display(strNumber, equals=false){
     //displays strNumber on .screen element
     mainScreen.textContent = strNumber;
-    secondScreen.textContent= firstNumber+ nextOperator+secondNumber;
+    secondScreen.textContent= `${firstNumber} ${nextOperator} ${secondNumber}`;
     if(equals) {secondScreen.textContent += " = "}
 }
 
